@@ -1,31 +1,54 @@
-<!doctype html>
-<html>
-  <head>
-    <title>LA TV Shows | Home</title>
-    <meta name="description" content="A Catalog of Shows Set in Los Angeles" />
-    <link rel="stylesheet" href="style.css" />
-    <script type="text/javascript" src="scripts.js"></script>
-  </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pokédex Catalog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
 
-  <body>
-    <header class="main-header">
-      <h1 class="title">LA TV Shows</h1>
-    </header>
-    <div id="card-container"></div>
-    <div class="card" style="display: none">
-      <div class="card-content">
-        <h2>TV Show Title</h2>
-        <img src="" alt="TV Show Poster" />
-        <ul>
-          <li>Bullet Point 1</li>
-          <li>Bullet Point 2</li>
-          <li>Bullet Point 3</li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer">
-      <button onclick="quoteAlert()">Get A Quote!</button>
-      <button onclick="removeLastCard()">Remove A Card!</button>
-    </div>
-  </body>
+  <header>
+    <svg class="logo" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="22" cy="22" r="21" fill="white"/>
+      <path d="M1 22 A21 21 0 0 1 43 22 Z" fill="#CC0000"/>
+      <rect x="1" y="20.5" width="42" height="3" fill="#222"/>
+      <circle cx="22" cy="22" r="7" fill="white" stroke="#222" stroke-width="3"/>
+      <circle cx="22" cy="22" r="3.5" fill="#f0f0f0"/>
+    </svg>
+    <h1>Pokédex</h1>
+    <span id="total-count"></span>
+  </header>
+
+  <div class="controls">
+    <input
+      class="search-input"
+      type="text"
+      id="search"
+      placeholder="🔍  Search by name..."
+      oninput="handleSearch(this.value)"
+    />
+    <div class="type-filters" id="type-filters"></div>
+    <select class="sort-select" id="sort" onchange="handleSort(this.value)">
+      <option value="id">Sort: Pokédex #</option>
+      <option value="name">Sort: Name A–Z</option>
+      <option value="hp">Sort: HP ↓</option>
+      <option value="attack">Sort: Attack ↓</option>
+      <option value="defense">Sort: Defense ↓</option>
+      <option value="speed">Sort: Speed ↓</option>
+      <option value="total">Sort: Total Stats ↓</option>
+    </select>
+  </div>
+
+  <div class="results-bar" id="results-bar"></div>
+
+  <div id="card-container"></div>
+
+  <footer>Data &amp; sprites from PokéAPI &nbsp;·&nbsp; Pokémon © Nintendo / Game Freak</footer>
+
+  <script src="scripts.js" defer></script>
+</body>
 </html>
